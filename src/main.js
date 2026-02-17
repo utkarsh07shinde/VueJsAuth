@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import { myMSALObj } from './config/msalConfig'
 // Vuetify imports
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -17,7 +17,26 @@ const vuetify = createVuetify({
   directives,
 })
 
-createApp(App)
-  .use(router)
-  .use(vuetify)
-  .mount('#app')
+// createApp(App)
+//   .use(router)
+//   .use(vuetify)
+//   .mount('#app')
+async function bootstrap() {
+  // 1️⃣ Initialize MSAL
+  await myMSALObj.initialize()
+
+  // 2️⃣ Handle redirect BEFORE mounting app
+  const response = await myMSALObj.handleRedirectPromise()
+
+  if (response?.account) {
+    myMSALObj.setActiveAccount(response.account)
+  }
+
+  // 3️⃣ Mount Vue app AFTER MSAL is ready
+  createApp(App)
+    .use(router)
+    .use(vuetify)
+    .mount('#app')
+}
+
+bootstrap()

@@ -86,12 +86,12 @@ import Topbar from './Topbar.vue'
 import Sidebar from './Sidebar.vue'
 import bus from '../styles/eventBus'
 
-// ✅ Shared sidebar state
+// Shared sidebar state
 const drawer = ref(true)
 const isRail = ref(true)
 const pinned = ref(false)
 
-// ✅ Shared notifications state
+// Shared notifications state
 const notifyDrawer = ref(false)
 const notifications = ref([])
 

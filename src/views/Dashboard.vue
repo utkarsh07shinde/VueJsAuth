@@ -1,6 +1,6 @@
 <template>
   <div class="crowdstrike-dashboard light-theme">
-    <!-- ENHANCED QUICK STATS BAR - 6 CONTAINERS -->
+    <!-- ENHANCED QUICK STATS BAR -->
     <div class="enhanced-stats-bar">
       <v-card class="stat-card" v-for="stat in enhancedStats" :key="stat.title" :class="stat.trend">
         <div class="stat-content">
@@ -65,21 +65,7 @@
               class="threat-table"
               :items-per-page="5"
             >
-              <template v-slot:item.severity="{ item }">
-                <v-chip :color="getSeverityColor(item.severity)" variant="flat" size="small">
-                  {{ item.severity.toUpperCase() }}
-                </v-chip>
-              </template>
-              <template v-slot:item.actions="{ item }">
-                <div class="action-buttons">
-                  <v-btn icon variant="text" size="x-small" color="#605e5c" :title="`Investigate ${item.title}`">
-                    <v-icon>mdi-magnify</v-icon>
-                  </v-btn>
-                  <v-btn icon variant="text" size="x-small" color="#e81123" :title="`Contain ${item.title}`">
-                    <v-icon>mdi-shield-plus</v-icon>
-                  </v-btn>
-                </div>
-              </template>
+              
             </v-data-table>
           </div>
         </v-card>
@@ -330,7 +316,7 @@
       </div>
     </div>
 
-    <!-- NEW SECTION: GLOBAL THREAT INSIGHTS (Full-width container at the very bottom) -->
+    <!-- NEW SECTION: GLOBAL THREAT INSIGHTS -->
     <div class="bottom-insights">
       <v-container fluid class="pa-0">
         <v-row>
@@ -353,7 +339,6 @@
               </div>
 
               <div class="chart-content">
-                <!-- IMPORTANT: Replace this placeholder section with your actual Pie Chart component -->
                 <div class="pie-chart-placeholder">
                   <div class="chart-placeholder-visual">
                     <!-- Placeholder for the chart visualization -->
@@ -646,8 +631,6 @@ const getSeverityColor = (severity) => {
 </script>
 
 <style scoped>
-/* All existing styles remain the same. New styles are added below: */
-
 .light-theme {
   background: #ffffff;
   min-height: 100vh;
@@ -664,8 +647,6 @@ const getSeverityColor = (severity) => {
   background: #faf9f8;
   border-bottom: 1px solid #edebe9;
 }
-
-/* --- (Existing .stat-card, .stat-content, etc. styles omitted for brevity) --- */
 
 .stat-card {
   background: #ffffff !important;
@@ -818,7 +799,7 @@ const getSeverityColor = (severity) => {
   gap: 8px;
 }
 
-/* FIXED PADDING FOR ALL CONTAINERS */
+/* PADDING */
 .table-container {
   padding: 0 8px 8px 8px;
 }
@@ -1045,18 +1026,17 @@ const getSeverityColor = (severity) => {
 }
 
 
-/* --- NEW BOTTOM CONTAINER STYLES --- */
+/* --- NEW BOTTOM --- */
 
 .bottom-insights {
-  /* This container uses the same padding and max-width as dashboard-content to align perfectly below it */
-  padding: 0 24px 24px 24px; 
+   padding: 0 24px 24px 24px; 
   max-width: 1800px;
   margin: 0 auto;
 }
 
 .global-chart-card {
   min-height: 250px;
-  margin-bottom: 0; /* No margin below the last card */
+  margin-bottom: 0; 
 }
 
 .chart-content {
@@ -1095,7 +1075,7 @@ const getSeverityColor = (severity) => {
 
 .chart-legend-item {
   display: grid;
-  grid-template-columns: 12px auto 60px 50px; /* dot, label, value, percentage */
+  grid-template-columns: 12px auto 60px 50px; 
   grid-template-rows: auto auto;
   align-items: center;
   column-gap: 10px;
@@ -1136,7 +1116,7 @@ const getSeverityColor = (severity) => {
 
 .legend-progress {
   grid-column: 2 / 5;
-  margin-top: -3px; /* Align progress bar better */
+  margin-top: -3px; 
 }
 
 /* Responsive Design */
