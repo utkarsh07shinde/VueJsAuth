@@ -5,8 +5,8 @@
  auth: {
  clientId: 'd12df531-8e2c-4d85-ac14-ab56707004c6',
  authority: 'https://login.microsoftonline.com/1e499b00-b34d-4461-b219-a45d602ca97c',
- redirectUri: 'https://localhost:5173/', // Replace with your actual redirect URI
- postLogoutUri: 'https://localhost:5173/'
+ redirectUri: window.location.origin, // Replace with your actual redirect URI
+ postLogoutUri: window.location.origin
  },
  cache: {
  cacheLocation: 'sessionStorage', // This configures where your cache will be stored
